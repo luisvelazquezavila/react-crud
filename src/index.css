@@ -1,0 +1,31 @@
+form {
+  max-width: "300px";
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+label, button {
+  display: block;
+  margin-top: 1rem;
+}
+
+input, select {
+  width: 280px;
+  display: block;
+}
+
+span {
+  font-weight: 500;
+  color: crimson;
+  font-size: small;
+  display: block;
+  max-width: 280px;
+  overflow-wrap: break-word;
+}
+
+select {
+  width: fit-content;
+}
