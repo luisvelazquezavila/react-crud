@@ -10,9 +10,19 @@ export default function AppCrud() {
     { id: uuidv4(), name: 'Tania', username: 'floppydiskette' },
     { id: uuidv4(), name: 'Craig', username: 'siliconeidolon' },
     { id: uuidv4(), name: 'Ben', username: 'benisphere' },
+    { id: uuidv4(), name: 'Ricardo', username: 'richi' }
   ];
 
- 
+  const cargarDatos = () => {
+    const baseData = JSON.parse(localStorage.getItem('data'));
+
+    if (!baseData) {
+      localStorage.setItem('data', JSON.stringify(usersData));
+    }
+  }
+
+  cargarDatos();
+  
   // Agregar usuarios
   const addUser = user => {
     user.id = uuidv4(),
@@ -20,16 +30,18 @@ export default function AppCrud() {
       ...users,
       user
     ])
+    localStorage.setItem('data', JSON.stringify(users));
   }
 
   // Eliminar usuario
   const deleteUser = (id) => {
     const arrayFiltrado = users.filter((user) => user.id !== id);
     setUsers(arrayFiltrado);
+    localStorage.setItem('data', JSON.stringify(users));
   }
 
   // state
-  const [users, setUsers] = useState(usersData);
+  const [users, setUsers] = useState(JSON.parse(localStorage.getItem('data')));
 
   // Editar usuario
   const [editing, setEditing] = useState(false);
@@ -51,6 +63,7 @@ export default function AppCrud() {
   const updateUser = (id, updateUser) => {
     setEditing(false);
     setUsers(users.map(user => (user.id === id ? updateUser : user)));
+    localStorage.setItem('data', JSON.stringify(users));
   }
 
   return (
