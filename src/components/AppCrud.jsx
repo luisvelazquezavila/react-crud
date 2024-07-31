@@ -30,7 +30,6 @@ export default function AppCrud() {
       ...users,
       user
     ])
-    localStorage.setItem('data', JSON.stringify(users));
   }
 
   // Eliminar usuario
